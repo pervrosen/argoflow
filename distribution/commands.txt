@@ -1,0 +1,270 @@
+  808  helm install velero vmware-tanzu/velero --namespace <YOUR NAMESPACE> --create-namespace --set-file credentials.secretContents.cloud=<FULL PATH TO FILE> --set configuration.provider=<PROVIDER NAME> --set configuration.backupStorageLocation.name=<BACKUP STORAGE LOCATION NAME> --set configuration.backupStorageLocation.bucket=<BUCKET NAME> --set configuration.backupStorageLocation.config.region=<REGION> --set configuration.volumeSnapshotLocation.name=<VOLUME SNAPSHOT LOCATION NAME> --set configuration.volumeSnapshotLocation.config.region=<REGION> --set initContainers[0].name=velero-plugin-for-<PROVIDER NAME> --set initContainers[0].image=velero/velero-plugin-for-<PROVIDER NAME>:<PROVIDER PLUGIN TAG> --set initContainers[0].volumeMounts[0].mountPath=/target --set initContainers[0].volumeMounts[0].name=plugins
+  809  helm install velero vmware-tanzu/velero --namespace velero --create-namespace --set-file  --set configuration.backupStorageLocation.bucket=<BUCKET NAME> --set configuration.backupStorageLocation.config.region=<REGION> --set configuration.volumeSnapshotLocation.name=<VOLUME SNAPSHOT LOCATION NAME> --set configuration.volumeSnapshotLocation.config.region=<REGION> --set initContainers[0].name=velero-plugin-for-<PROVIDER NAME> --set initContainers[0].image=velero/velero-plugin-for-<PROVIDER NAME>:<PROVIDER PLUGIN TAG> --set initContainers[0].volumeMounts[0].mountPath=/target --set initContainers[0].volumeMounts[0].name=plugins
+  810  velero install 
+  811  velero install --dry-run
+  812  velero install --dry-run --provider=CSI
+  813  velero install --dry-run --provider=CSI --bucket=
+  814  kubectl get po
+  815  kubectl get po -A
+  816  kubectl get po -A | grep minio
+  817  mc list
+  818  mc-- help
+  819  mc --help
+  820  mc ls
+  821  kubectl get secrets -A
+  822  kubectl get secrets -A | grep minio
+  823  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow | grep minio
+  824  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow | grep minio -o yaml
+  825  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml
+  826  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml | base64 -D
+  827  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml | base64 
+  828  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml 
+  829  base64 bWluaW8=
+  830  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml | base64 -d
+  831  kubectl get secrets/mlpipeline-minio-artifact -n kubeflow -o yaml 
+  832  base64 -d bWluaW8=
+  833  echo bWluaW8= | base64 -d 
+  834  echo bWluaW8xMjM= | base64 -d 
+  835  mc alias
+  836  mc alias list
+  837  mc alias set minikf http://10.10.10.10
+  838  mc alias set minikf http://10.10.10.10:9000
+  839  mc alias set minikf http://127.0.0.0.1:9000
+  840  mc alias set minikf http://127.0.0.1:9000
+  841  mc list 
+  842  mc ls 
+  843  mc ls -h
+  844  mc ls minikf
+  845  vi credentials-velero
+  846  ls
+  847  vi start veleroServer.sh
+  848  mv start vereroServer.sh
+  849  cat vereroServer.sh 
+  850  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-minio --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://127.0.0.1:9000,publicUrl=http://127.0.0.1:9000
+  851  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://127.0.0.1:9000,publicUrl=http://127.0.0.1:9000
+  852  ls
+  853  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-velero --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://127.0.0.1:9000,publicUrl=http://127.0.0.1:9000
+  854  kubectl logs deployment/velero -n velero
+  855  kubectl get svc -A | grep minio
+  856  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-velero --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://i10.106.116.12:9000,publicUrl=http://127.0.0.1:9000
+  857  kubectl logs deployment/velero -n velero
+  858  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-velero --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://i10.106.116.12:9000,publicUrl=http://10.106.116.12:9000
+  859  kubectl logs deployment/velero -n velero
+  860  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-velero --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://10.106.116.12:9000,publicUrl=http://10.106.116.12:9000
+  861  kubectl logs deployment/velero -n velero
+  862  velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket tkgs-velero --secret-file ./credentials-velero --use-volume-snapshots=false --use-restic --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://minio.kubeflow.svc:9000
+  863  kubectl logs deployment/velero -n velero
+  864  velero install --provider aws --bucket velero --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://minio.kubeflow.svc:9000
+  865  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://minio.kubeflow.svc:9000
+  866  velero get backup
+  867  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://127.0.0.:9000
+  868  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://127.0.0.1:9000
+  869  velero get backup
+  870  kubectl logs deployment/velero -n velero
+  871  mc ls minikf
+  872  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://localhost:9000
+  873  kubectl logs deployment/velero -n velero
+  874  velero get backup
+  875  velero create backup
+  876  velero create backup testbkp
+  877  velero backup logs testbkp
+  878  velero backup describe testbkp
+  879  velero backup logs testbkp
+  880  velero -h
+  881  velero delete 
+  882  kubectl get ns
+  883  kubectl get po -n velero
+  884  kubectl delete ns  velero
+  885  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://localhost:9000
+  886  kubectl logs deployment/velero -n velero
+  887  velero get backup
+  888  velero create backup testbkp
+  889  velero backup logs testbkp
+  890  velero backup describe testbkp
+  891  kubectl logs deployment/velero -n velero
+  892  kubectl delete ns  velero
+  893  velero install --provider aws --bucket velero --plugins velero/velero-plugin-for-aws:v1.0.0 --secret-file ./credentials-velero --use-volume-snapshots=false --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://minio.kubeflow.svc:9000
+  894  kubectl logs deployment/velero -n velero
+  895  velero backup logs testbkp
+  896  velero create backup testbkp
+  897  velero backup describe testbkp
+  898  velero backup logs testbkp
+  899  vi /etc/hosts
+  900  sudo vi /etc/hosts
+  901  velero backup logs testbkp
+  902  velero backup describe testbkp
+  903  velero backup list
+  904  velero backup get
+  905  velero 
+  906  velero get
+  907  velero getsnapshot-locations
+  908  velero get snapshot-locations
+  909  velero 
+  910  kubectl logs deployment/velero -n velero
+  911  sudo vi /etc/hosts
+  912  kubectl logs deployment/velero -n velero
+  913  velero backup list
+  914  velero backup describe testbkp
+  915  velero backup logs testbkp
+  916  sudo vi /etc/hosts
+  917  kubectl logs deployment/velero -n velero
+  918  velero backup logs testbkp
+  919  velero create backup testbkp
+  920  velero create backup hepp
+  921  velero backup logs hepp
+  922  velero backup describe hepp
+  923  kubectl get svc -n kubeflow
+  924  kubectl edit  svc/minio-service -n kubeflow
+  925  kubectl get svc -n kubeflow
+  926  sudo vi /etc/hosts
+  927  velero create backup hepp2
+  928  velero backup logs hepp2
+  929  velero backup describe hepp2
+  930  ls
+  931  vi README.veleroLocal
+  932  velero backup describe hepp2
+  933  velero backup logs hepp2
+  934  mkdir s3
+  935  cd s3
+  936  ls
+  937  less velero-backup.json 
+  938  history 
+  939  cd ..
+  940  vi README.veleroLocal 
+  941  ls
+  942  cat vereroServer.sh 
+  943  vi vereroServer.sh 
+  944  cat README.veleroLocal 
+  945  mv vereroServer.sh veleroServer.sh 
+  946  ls
+  947  ls -ltra
+  948  cd s3
+  949  ls
+  950  cd ..
+  951  cd minikf/
+  
+
+
+
+  952  vagrant destroy
+  953  sudo yum update
+  954  kind status cluster
+  955  kind info cluster
+  956  kind get clusters
+  957  kind get  clusters -v
+  958  kind get  clusters -v 5
+  959  kind get nodes 
+  960  kind get po -A
+  961  kubectltl get po -A
+  962  kubectl get po -A
+  963  kind destroy cluster
+  964  kind delete cluster
+  965  export | grep KUBE
+  966  declare -x KUBECONFIG="/datasets/projects/exportedK9sYAMLs/kubeflow2/kubeconfig"
+  967  export  KUBECONFIG="/datasets/projects/exportedK9sYAMLs/kubeflow2/kubeconfig"
+  968  kubectl port-forward
+  969  kubectl port-forward -h
+  970  kubectl get po | grep minio
+  971  kubectl get po -A | grep minio
+  972  kubectl get -n po/minio-6cfd7cb4f-wjfn6 -o yaml
+  973  kubectl get -n kubeflow po/minio-6cfd7cb4f-wjfn6 -o yaml
+  974  kubectl get -n kubeflow po/minio-6cfd7cb4f-wjfn6 -o yaml | grep ort
+  975  kubectl port-forward -n kubeflow po/minio-6cfd7cb4f-wjfn6 9000:9000/TCP
+  976  kubectl port-forward -n kubeflow po/minio-6cfd7cb4f-wjfn6 9000:9000
+  977  sudo vi /etc/hosts
+  978  vi README.velero
+  979  kubectl get svc -A | grep minio
+  980  export  KUBECONFIG="/datasets/projects/exportedK9sYAMLs/kubeflow2/kubeconfig"
+  981  kubectl get svc -A | grep minio
+  982  mc ls minikf
+  983  mc ls minikf/velero
+  984  mc ls minikf/vmlpipeline
+  985  mc ls minikf/mlpipeline
+  986  kubectl get svc -n kubeflow
+  987  crontab -l
+  988  sudo crontab -l
+  989  cd /etc/cron.d
+  990  ls
+  991  cd ..
+  992  ls cron*
+  993  sudo rm cron.daily/google-chrome 
+  994  ssh 10.0.0.2
+  995  exit
+  996  helm
+  997   list
+  998  helm  list
+  999  helm upgrade
+ 1000  exit
+ 1001  kubectl get ns
+ 1002  kubectl get po -n minio
+ 1003  kubectl get all -n minio 
+ 1004  kubectl edit svc/service/minio-1638173876 -n minio 
+ 1005  kubectl edit svc/minio-1638173876 -n minio 
+ 1006  kubectl get all -n minio 
+ 1007  kubectl port-forward 9000:9000
+ 1008  kubectl port-forward service/minio-1638173876 -n minio 9000:9000
+ 1009  kubectl get all -n minio 
+ 1010  kubectl get all -A
+ 1011  kubectl get pv
+ 1012  kubectl get pvc -A
+ 1013  kubectl port-forward service/minio-1638173876 -n minio 9000:9000
+ 1014  kubectl port-forward service/minio-1638173876-svc -n minio 9000:9000
+ 1015  kubectl port-forward service/minio-1638173876-svc -n minio 9000-9001:9000-9001
+ 1016  kubectl get pvc -A
+ 1017  kubectl get all -A
+ 1018  kubectl port-forward service/minio-1638173876-console -n minio 9001:9001
+ 1019  kubectl get all -A
+ 1020  kubectl get pv
+ 1021  kubectl get pvc
+ 1022  kubectl get pvc -A
+ 1023  kubectl get pvc -A'
+'
+ 1024  kubectl get pvc -A
+ 1025  kubectl get pv
+ 1026  kind destroy cluster
+ 1027  kind delete cluster
+ 1028  cd /datasets/projects/
+ 
+
+
+
+ 1029  git clone https://github.com/argoflow/argoflow.git
+ 1030  cd argoflow/
+ 1032  kind create cluster --config kind/kind-cluster.yaml
+ 1033  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+ 1034  kubectl patch deployment metrics-server -n kube-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"metrics-server","args":["--cert-dir=/tmp", "--secure-port=4443", "--kubelet-insecure-tls","--kubelet-preferred-address-types=InternalIP"]}]}}}}'
+ 1035  vi kind/kind-cluster.yaml 
+ 1036  kind get clusters
+ 1037  kubectl get ns
+ 1038  kind get 
+ 1039  kind get nodes
+ 1040  kind get clusters
+ 1041  kind get nodes
+ 1042  kubectl get ns
+ 1043  kubectl get nodes
+ 1044  kubectl info
+ 1045  kubectl 
+ 1046  kind create cluster --config kind/kind-cluster.yaml
+ 1047  kind 
+ 1048  kind get kubeconfig
+ 1049  kind delete cluster
+ 1050  kind create cluster --config kind/kind-cluster.yaml
+
+ 1055  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+ 1056  kubectl patch deployment metrics-server -n kube-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"metrics-server","args":["--cert-dir=/tmp", "--secure-port=4443", "--kubelet-insecure-tls","--kubelet-preferred-address-types=InternalIP"]}]}}}}'
+
+ 1091  kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
+ 1092  kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+ 
+ 1094  kubectl create namespace argocd
+ 1095  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+ 1097  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+ 1098  kubectl get svc argocd-server -n argocd
+ 1116  kubectl -n argocd patch secret argocd-secret   -p '{"stringData": {
+    "admin.password": "$2a$10$rRyBsGSHK6.uc8fntPwVIuLVHgsAhAX7TcdrqW/RADU0uh7CaChLa",
+    "admin.passwordMtime": "'$(date +%FT%T%Z)'"
+  }}'
+ 
+ 1121  kubectl apply -f kubeflow.yaml
+ 1126  kubectl get svc istio-ingressgateway -n istio-system
+ 1127  history > commands.txt
