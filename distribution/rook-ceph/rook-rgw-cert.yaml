@@ -8,7 +8,7 @@ spec:
   issuerRef:
     name: gateways-issuer
     kind: ClusterIssuer
-  commonName: <<__subdomain_radosgw__>>.<<__domain__>>
+  commonName: rgw.localhost.localdomain
   dnsNames:
-    - <<__subdomain_radosgw__>>.<<__domain__>>
-    - '*.<<__subdomain_radosgw__>>.<<__domain__>>'
+    - rgw.localhost.localdomain
+    - '*.rgw.localhost.localdomain'
