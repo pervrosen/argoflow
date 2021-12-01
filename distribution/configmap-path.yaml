@@ -11,3 +11,9 @@ staticPasswords:
 - email: user
   hash: $2a$15$UVoqmWyZZNFTnbHg8qHorO.UoeFfqt7UiKm5sXolqLgVCZd2QjDrO
   username: user
+
+# password = gamla vanliga
+#staticPasswords:
+#- email: user
+#  hash: $2y$12$B7oI4KcifO3zQzE0UojjjuYNEZJPQzvNDNQRH2qwVBVwH3jxs9BWu
+#  username: user
