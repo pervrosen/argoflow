@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 15.0.2
-    chart: bitnami/keycloak
+    chart: keycloak
     helm:
      parameters:
       - name : auth.adminUser
