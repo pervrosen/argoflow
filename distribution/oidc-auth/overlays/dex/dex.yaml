@@ -15,6 +15,12 @@ spec:
         value: dex-config
     repoURL: https://charts.dexidp.io
     targetRevision: 0.4.0
+    plugin:
+      env:
+        - name: KUBERNETES_POD_NAMESPACE
+          valueFrom:
+          fieldRef:
+          fieldPath: metadata.namespace
   destination:
     namespace: auth
     server: https://kubernetes.default.svc
