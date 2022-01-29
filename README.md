@@ -118,13 +118,15 @@ run the following command:
 
 After updating the metallb configmap, deploy it by running:
 
+`kubectl create ns metallb-system`
+
 `kustomize build metallb/ | kubectl apply -f -`
 
 ### Deploy Argo CD
 
 Deploy Argo CD with the following commaind:
 
-`kustomize build argocd/ | kubectl apply -f -`
+`kustomize build argocd/base/ | kubectl apply -f -`
 
 Expose Argo CD with a LoadBalancer to access the UI by executing:
 
@@ -133,6 +135,14 @@ Expose Argo CD with a LoadBalancer to access the UI by executing:
 Get the IP of the Argo CD endpoint:
 
 `kubectl get svc argocd-server -n argocd`
+
+`kubectl -n argocd patch secret argocd-secret \
+>   -p '{"stringData": {
+>     "admin.password": "$2a$10$rRyBsGSHK6.uc8fntPwVIuLVHgsAhAX7TcdrqW/RADU0uh7CaChLa",
+>     "admin.passwordMtime": "'$(date +%FT%T%Z)'"
+>   }}'`
+
+
 
 Login with the username `admin` and the output of the following command as the password:
 
