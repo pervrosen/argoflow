@@ -18,7 +18,7 @@ spec:
     plugin:
       env:
          - name: KUBERNETES_POD_NAMESPACE
-           value: argocd
+           value: auth
   destination:
     namespace: auth
     server: https://kubernetes.default.svc
